@@ -39,9 +39,9 @@ namespace VideoTerminalControl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s = connecting(listBox1.SelectedItem.ToString(), 23);
-             label1.Text += "Answer:\n" + s;
-
+            string s = connecting(listBox1.SelectedItem.ToString(), Convert.ToInt32(numericUpDown1.Value));
+             richTextBox1.Text += "Answer:\n" + s;
+            
             // server output should end with "$" or ">", otherwise the connection failed
             //string prompt = s.TrimEnd();
             //prompt = s.Substring(prompt.Length - 1, 1);
@@ -57,16 +57,21 @@ namespace VideoTerminalControl
             if (tc.IsConnected && prompt.Trim() != "exit")
             {
                 // display server output
-                label1.Text += '\n' + tc.Read();
+                richTextBox1.Text += '\n' + tc.Read();
 
                 // send client input to server
                 send(prompt);
 
                 // display server output
-                label1.Text += '\n' + tc.Read();
+                richTextBox1.Text += '\n' + tc.Read();
+            }
+            else
+            {
+                send(prompt);
+                label2.Text = "DISCONNECTED";
             }
 
-            label2.Text = "DISCONNECTED";
+            textBox2.Text = "";
         }
     }
 }
