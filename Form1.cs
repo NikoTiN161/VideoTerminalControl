@@ -25,23 +25,27 @@ namespace VideoTerminalControl
         {
            
         }
-        public string connecting(string ip, int port)
+        public void connecting(string ip, int port)
         {
             tc = new TelnetConnection(ip, port);
-            string s = tc.Login("admin", "6008", 100);
-            return s;
+            richTextBox1.Text += '\n' + tc.Read();
         }
 
         private void send(string command)
         {
             tc.WriteLine(command);
         }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            tc.Login("admin", "6008", 100);
+            richTextBox1.Text += '\n' + tc.Read();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s = connecting(listBox1.SelectedItem.ToString(), Convert.ToInt32(numericUpDown1.Value));
-             richTextBox1.Text += "Answer:\n" + s;
-            
+            connecting(listBox1.SelectedItem.ToString(), Convert.ToInt32(numericUpDown1.Value));
+            richTextBox1.Text += '\n' + tc.Read();
+
             // server output should end with "$" or ">", otherwise the connection failed
             //string prompt = s.TrimEnd();
             //prompt = s.Substring(prompt.Length - 1, 1);
@@ -83,5 +87,7 @@ namespace VideoTerminalControl
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
+
+
     }
 }
