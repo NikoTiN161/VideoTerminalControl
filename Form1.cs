@@ -28,7 +28,7 @@ namespace VideoTerminalControl
         public string connecting(string ip, int port)
         {
             tc = new TelnetConnection(ip, port);
-            string s = tc.Login("admin", "6008", 1000);
+            string s = tc.Login("admin", "6008", 100);
             return s;
         }
 
@@ -72,6 +72,16 @@ namespace VideoTerminalControl
             }
 
             textBox2.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Add(textBox1.Text);
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Remove(listBox1.SelectedItem);
         }
     }
 }
