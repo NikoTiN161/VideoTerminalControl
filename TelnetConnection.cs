@@ -38,9 +38,9 @@ namespace VideoTerminalControl
             int oldTimeOutMs = TimeOutMs;
             TimeOutMs = LoginTimeOutMs;
             string s = Read();
-            if (!s.TrimEnd().EndsWith(""))
+            /*if (!s.TrimEnd().EndsWith(""))
                 throw new Exception("Failed to connect : no login prompt");
-            WriteLine(Username);
+            WriteLine(Username);*/
 
             s += Read();
             if (!s.TrimEnd().EndsWith(""))

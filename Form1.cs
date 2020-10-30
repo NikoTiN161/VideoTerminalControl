@@ -12,8 +12,10 @@ namespace VideoTerminalControl
 {
     public partial class Form1 : Form
     {
-        //create a new telnet connection to hostname "gobelijn" on port "23"
+
         TelnetConnection tc;
+        bool isMute = false;
+        int Volume;
 
         public Form1()
         {
@@ -31,15 +33,60 @@ namespace VideoTerminalControl
             richTextBox1.Text += '\n' + tc.Read();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            label6.Text = tc.Login("admin", "123456", 200);
+            
+            richTextBox1.Text += '\n' + tc.Read();
+ 
+        }
+
         private void send(string command)
         {
             tc.WriteLine(command);
         }
-        private void button4_Click(object sender, EventArgs e)
+
+        private int getVolume()
         {
-            tc.Login("admin", "6008", 100);
-            richTextBox1.Text += '\n' + tc.Read();
+            
+            send("volume get");
+
+            string[] s = tc.Read().Split(new char[] { ' ' });
+            int result = Convert.ToInt32(s[2]); 
+
+            if ()
+            {
+
+            }
+            
+
+            return result; 
         }
+
+        private void volumeChangeOn(int i)
+        {
+            i += getVolume();
+            send($"volume set {i}");
+        }
+
+        private void volumeSet(int i)
+        {
+            send($"volume set {i}");
+        }
+
+        private void mute()
+        {
+            if (!isMute)
+            {
+                Volume = getVolume();
+                send("volume set 0");
+            } else
+            {
+                send($"volume set {Volume}");
+            }
+        }
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -54,7 +101,7 @@ namespace VideoTerminalControl
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void sendBtn_Click(object sender, EventArgs e)
         {
             string prompt = textBox2.Text;
             // while connected
@@ -62,7 +109,7 @@ namespace VideoTerminalControl
             {
                 // display server output
                 richTextBox1.Text += '\n' + tc.Read();
-
+                
                 // send client input to server
                 send(prompt);
 
@@ -88,6 +135,9 @@ namespace VideoTerminalControl
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+           label6.Text = getVolume().ToString();
+        }
     }
 }
