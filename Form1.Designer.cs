@@ -37,26 +37,30 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.log = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.button5 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nowVol = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.muteBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(250, 32);
+            this.button1.Location = new System.Drawing.Point(138, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -67,7 +71,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(419, 65);
+            this.label1.Location = new System.Drawing.Point(12, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 13);
             this.label1.TabIndex = 1;
@@ -75,14 +79,15 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(422, 32);
+            this.textBox2.Location = new System.Drawing.Point(225, 22);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(202, 20);
             this.textBox2.TabIndex = 3;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // sendBtn
             // 
-            this.sendBtn.Location = new System.Drawing.Point(677, 32);
+            this.sendBtn.Location = new System.Drawing.Point(435, 19);
             this.sendBtn.Name = "sendBtn";
             this.sendBtn.Size = new System.Drawing.Size(75, 23);
             this.sendBtn.TabIndex = 4;
@@ -109,7 +114,7 @@
             "1.6.100.5",
             "1.6.20.2",
             "80.72.229.118"});
-            this.listBox1.Location = new System.Drawing.Point(36, 35);
+            this.listBox1.Location = new System.Drawing.Point(12, 19);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 95);
             this.listBox1.TabIndex = 6;
@@ -128,137 +133,178 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // richTextBox1
+            // log
             // 
-            this.richTextBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.richTextBox1.Location = new System.Drawing.Point(422, 95);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(316, 308);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(180, 35);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(45, 20);
-            this.numericUpDown1.TabIndex = 8;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            24,
-            0,
-            0,
-            0});
+            this.log.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.log.Location = new System.Drawing.Point(12, 151);
+            this.log.Name = "log";
+            this.log.Size = new System.Drawing.Size(120, 287);
+            this.log.TabIndex = 7;
+            this.log.Text = "";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 19);
+            this.label3.Location = new System.Drawing.Point(9, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "IP";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "port";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(422, 13);
+            this.label5.Location = new System.Drawing.Point(227, 3);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "comand";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(250, 144);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "add device";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(36, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 13;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(250, 65);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 14;
-            this.button4.Text = "login";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(250, 212);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "getVolume";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 212);
+            this.label6.Location = new System.Drawing.Point(222, 68);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 13);
+            this.label6.Size = new System.Drawing.Size(112, 13);
             this.label6.TabIndex = 16;
+            this.label6.Text = "Текущая громкость:";
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(94, 313);
+            this.numericUpDown2.Location = new System.Drawing.Point(225, 139);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(91, 20);
             this.numericUpDown2.TabIndex = 17;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(94, 313);
+            this.button5.Location = new System.Drawing.Point(225, 139);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 20);
             this.button5.TabIndex = 18;
-            this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(225, 105);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 20);
+            this.button3.TabIndex = 20;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(225, 105);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(91, 20);
+            this.numericUpDown1.TabIndex = 19;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // nowVol
+            // 
+            this.nowVol.AutoSize = true;
+            this.nowVol.Location = new System.Drawing.Point(334, 68);
+            this.nowVol.Name = "nowVol";
+            this.nowVol.Size = new System.Drawing.Size(52, 13);
+            this.nowVol.TabIndex = 21;
+            this.nowVol.Text = "получить";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(371, 105);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(33, 28);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "+2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(410, 105);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(33, 28);
+            this.button4.TabIndex = 23;
+            this.button4.Text = "+5";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(449, 105);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(33, 28);
+            this.button6.TabIndex = 24;
+            this.button6.Text = "+8";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(371, 139);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(33, 28);
+            this.button7.TabIndex = 25;
+            this.button7.Text = "-2";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(410, 139);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(33, 28);
+            this.button8.TabIndex = 26;
+            this.button8.Text = "-5";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(449, 139);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(33, 28);
+            this.button9.TabIndex = 27;
+            this.button9.Text = "-8";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // muteBtn
+            // 
+            this.muteBtn.BackgroundImage = global::VideoTerminalControl.Properties.Resources.mute;
+            this.muteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.muteBtn.Location = new System.Drawing.Point(513, 105);
+            this.muteBtn.Name = "muteBtn";
+            this.muteBtn.Size = new System.Drawing.Size(33, 28);
+            this.muteBtn.TabIndex = 28;
+            this.muteBtn.UseVisualStyleBackColor = true;
+            this.muteBtn.Click += new System.EventHandler(this.muteBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.muteBtn);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.nowVol);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.log);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.sendBtn);
@@ -268,8 +314,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,20 +329,24 @@
         private System.Windows.Forms.Button sendBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.RichTextBox log;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label nowVol;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button muteBtn;
     }
 }
 
