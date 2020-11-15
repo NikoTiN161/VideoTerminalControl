@@ -15,6 +15,7 @@ namespace VideoTerminalControl
 
         TelnetConnection tc;
         bool isMute = false;
+        bool isMicMute = false;
         int Volume;
 
         public Form1()
@@ -22,26 +23,34 @@ namespace VideoTerminalControl
             InitializeComponent();
             
         }
-
-        public void Form1_Load(object sender, EventArgs e)
-        {
-           
-        }
         public void connecting(string ip, int port)
         {
             tc = new TelnetConnection(ip, port);
             log.Text += '\n' + tc.Read();
-            
-            //login
-           log.Text += '\n' + tc.Login("admin", "123456", 200);
-           log.Text += '\n' + tc.Read();
-           log.Text += '\n' + tc.Read();
+
+            if (tc.IsConnected)
+            {
+                //login
+                log.Text += '\n' + tc.Login("admin", "123456", 200);
+                log.Text += '\n' + tc.Read();
+                log.Text += '\n' + tc.Read();
+            } else
+            {
+                log.Text += "нет подключения";
+            }
         }
 
         private void send(string command)
         {
-            tc.Read();
-            tc.WriteLine(command);
+            if (tc.IsConnected)
+            {
+                tc.Read();
+                tc.WriteLine(command);
+            }
+            else
+            {
+                log.Text += "нет подключения";
+            }
         }
 
         private int getVolume()
@@ -158,7 +167,7 @@ namespace VideoTerminalControl
         {
             nowVol.Text = getVolume().ToString();
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             volumeChangeOn(2);
@@ -192,6 +201,22 @@ namespace VideoTerminalControl
         private void muteBtn_Click(object sender, EventArgs e)
         {
             mute();
+        }
+
+        private void micMuteBtn_Click(object sender, EventArgs e)
+        {
+            if (!isMicMute)
+            {
+                send("mute near on");
+                micMuteBtn.BackgroundImage = VideoTerminalControl.Properties.Resources.mic;
+                isMicMute = true;
+            }
+            else
+            {
+                send("mute near off");
+                micMuteBtn.BackgroundImage = VideoTerminalControl.Properties.Resources.micMute;
+                isMicMute = false;
+            }
         }
     }
 }

@@ -52,6 +52,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.micMuteBtn = new System.Windows.Forms.Button();
             this.muteBtn = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -172,8 +173,13 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(225, 139);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(91, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown2.TabIndex = 17;
             this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
@@ -181,7 +187,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(225, 139);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 20);
+            this.button5.Size = new System.Drawing.Size(39, 20);
             this.button5.TabIndex = 18;
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -190,7 +196,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(225, 105);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 20);
+            this.button3.Size = new System.Drawing.Size(39, 20);
             this.button3.TabIndex = 20;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -198,8 +204,13 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(225, 105);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(91, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown1.TabIndex = 19;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -211,10 +222,11 @@
             this.nowVol.Size = new System.Drawing.Size(52, 13);
             this.nowVol.TabIndex = 21;
             this.nowVol.Text = "получить";
+            this.nowVol.Click += new System.EventHandler(this.nowVol_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(371, 105);
+            this.button2.Location = new System.Drawing.Point(301, 101);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(33, 28);
             this.button2.TabIndex = 22;
@@ -224,7 +236,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(410, 105);
+            this.button4.Location = new System.Drawing.Point(340, 101);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(33, 28);
             this.button4.TabIndex = 23;
@@ -234,7 +246,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(449, 105);
+            this.button6.Location = new System.Drawing.Point(379, 101);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(33, 28);
             this.button6.TabIndex = 24;
@@ -244,7 +256,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(371, 139);
+            this.button7.Location = new System.Drawing.Point(301, 135);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(33, 28);
             this.button7.TabIndex = 25;
@@ -254,7 +266,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(410, 139);
+            this.button8.Location = new System.Drawing.Point(340, 135);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(33, 28);
             this.button8.TabIndex = 26;
@@ -264,7 +276,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(449, 139);
+            this.button9.Location = new System.Drawing.Point(379, 135);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(33, 28);
             this.button9.TabIndex = 27;
@@ -272,11 +284,22 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // micMuteBtn
+            // 
+            this.micMuteBtn.BackgroundImage = global::VideoTerminalControl.Properties.Resources.micMute;
+            this.micMuteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.micMuteBtn.Location = new System.Drawing.Point(443, 133);
+            this.micMuteBtn.Name = "micMuteBtn";
+            this.micMuteBtn.Size = new System.Drawing.Size(33, 28);
+            this.micMuteBtn.TabIndex = 29;
+            this.micMuteBtn.UseVisualStyleBackColor = true;
+            this.micMuteBtn.Click += new System.EventHandler(this.micMuteBtn_Click);
+            // 
             // muteBtn
             // 
             this.muteBtn.BackgroundImage = global::VideoTerminalControl.Properties.Resources.mute;
             this.muteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.muteBtn.Location = new System.Drawing.Point(513, 105);
+            this.muteBtn.Location = new System.Drawing.Point(443, 101);
             this.muteBtn.Name = "muteBtn";
             this.muteBtn.Size = new System.Drawing.Size(33, 28);
             this.muteBtn.TabIndex = 28;
@@ -289,6 +312,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.micMuteBtn);
             this.Controls.Add(this.muteBtn);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
@@ -347,6 +371,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button muteBtn;
+        private System.Windows.Forms.Button micMuteBtn;
     }
 }
 
