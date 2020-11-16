@@ -99,5 +99,23 @@
   <ItemGroup>
     <None Include="Resources\micMute.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

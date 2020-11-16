@@ -218,5 +218,40 @@ namespace VideoTerminalControl
                 isMicMute = false;
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            send("exit");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            send("configlayout monitor1 full_screen");
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            send("configlayout monitor1 side_by_side");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            send("configlayout monitor1 pip_lower_right");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            send("configlayout monitor1 pip_lower_left");
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            send("configlayout monitor1 pip_upper_right");
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            send("configlayout monitor1 pip_lower_left");
+        }
     }
 }
