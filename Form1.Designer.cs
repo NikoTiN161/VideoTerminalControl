@@ -60,9 +60,12 @@
             this.button10 = new System.Windows.Forms.Button();
             this.micMuteBtn = new System.Windows.Forms.Button();
             this.muteBtn = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -145,7 +148,7 @@
             this.log.ForeColor = System.Drawing.SystemColors.WindowText;
             this.log.Location = new System.Drawing.Point(12, 151);
             this.log.Name = "log";
-            this.log.Size = new System.Drawing.Size(120, 287);
+            this.log.Size = new System.Drawing.Size(120, 114);
             this.log.TabIndex = 7;
             this.log.Text = "";
             // 
@@ -294,7 +297,7 @@
             // 
             this.button15.BackgroundImage = global::VideoTerminalControl.Properties.Resources.rectangle__1_;
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button15.Location = new System.Drawing.Point(647, 72);
+            this.button15.Location = new System.Drawing.Point(559, 68);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(35, 27);
             this.button15.TabIndex = 35;
@@ -305,7 +308,7 @@
             // 
             this.button14.BackgroundImage = global::VideoTerminalControl.Properties.Resources.rectangle;
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button14.Location = new System.Drawing.Point(606, 72);
+            this.button14.Location = new System.Drawing.Point(518, 68);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(35, 27);
             this.button14.TabIndex = 34;
@@ -316,7 +319,7 @@
             // 
             this.button13.BackgroundImage = global::VideoTerminalControl.Properties.Resources.rectangle_1;
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.Location = new System.Drawing.Point(647, 138);
+            this.button13.Location = new System.Drawing.Point(559, 134);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(35, 27);
             this.button13.TabIndex = 33;
@@ -327,7 +330,7 @@
             // 
             this.button12.BackgroundImage = global::VideoTerminalControl.Properties.Resources.rectangle_2;
             this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button12.Location = new System.Drawing.Point(606, 138);
+            this.button12.Location = new System.Drawing.Point(518, 134);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(35, 27);
             this.button12.TabIndex = 32;
@@ -338,7 +341,7 @@
             // 
             this.button11.BackgroundImage = global::VideoTerminalControl.Properties.Resources.rectangle_4;
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button11.Location = new System.Drawing.Point(606, 105);
+            this.button11.Location = new System.Drawing.Point(518, 101);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(35, 27);
             this.button11.TabIndex = 31;
@@ -349,7 +352,7 @@
             // 
             this.button10.BackgroundImage = global::VideoTerminalControl.Properties.Resources.rectangle_3;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(647, 105);
+            this.button10.Location = new System.Drawing.Point(559, 101);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(35, 27);
             this.button10.TabIndex = 30;
@@ -360,7 +363,7 @@
             // 
             this.micMuteBtn.BackgroundImage = global::VideoTerminalControl.Properties.Resources.micMute;
             this.micMuteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.micMuteBtn.Location = new System.Drawing.Point(443, 133);
+            this.micMuteBtn.Location = new System.Drawing.Point(452, 133);
             this.micMuteBtn.Name = "micMuteBtn";
             this.micMuteBtn.Size = new System.Drawing.Size(33, 28);
             this.micMuteBtn.TabIndex = 29;
@@ -371,19 +374,35 @@
             // 
             this.muteBtn.BackgroundImage = global::VideoTerminalControl.Properties.Resources.mute;
             this.muteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.muteBtn.Location = new System.Drawing.Point(443, 101);
+            this.muteBtn.Location = new System.Drawing.Point(452, 101);
             this.muteBtn.Name = "muteBtn";
             this.muteBtn.Size = new System.Drawing.Size(33, 28);
             this.muteBtn.TabIndex = 28;
             this.muteBtn.UseVisualStyleBackColor = true;
             this.muteBtn.Click += new System.EventHandler(this.muteBtn_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 285);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(617, 22);
+            this.statusStrip1.TabIndex = 36;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(617, 307);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
@@ -419,6 +438,8 @@
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,6 +478,8 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

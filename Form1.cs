@@ -13,15 +13,18 @@ namespace VideoTerminalControl
     public partial class Form1 : Form
     {
 
-        TelnetConnection tc;
+        TelnetConnection tc = null;
         bool isMute = false;
         bool isMicMute = false;
-        int Volume;
-
+        private int Volume;
         public Form1()
         {
             InitializeComponent();
             
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            send("exit");
         }
         public void connecting(string ip, int port)
         {
@@ -36,38 +39,45 @@ namespace VideoTerminalControl
                 log.Text += '\n' + tc.Read();
             } else
             {
-                log.Text += "нет подключения";
+                log.Text += '\n' + "нет подключения";
             }
         }
 
-        private void send(string command)
+        private bool send(string command)
         {
-            if (tc.IsConnected)
+            if ((tc != null) && (tc.IsConnected))
             {
                 tc.Read();
                 tc.WriteLine(command);
-            }
-            else
+                return true;
+            } else
             {
                 log.Text += "нет подключения";
+                return false;
             }
         }
 
         private int getVolume()
         {
-            
-            send("volume get");
 
-            string[] s = tc.Read().Split(new char[] { ' ' });
-            int result = Convert.ToInt32(s[(s.Length-1)]);
- 
-            return result; 
+            if (send("volume get"))
+            {
+                string[] s = tc.Read().Split(new char[] { ' ' });
+                int result = Convert.ToInt32(s[(s.Length - 1)]);
+            return result;
+            }
+
+            return -1;
         }
 
         private void volumeChangeOn(int i)
         {
-            i += getVolume();
-            send($"volume set {i}");
+            int vol = getVolume();
+            if (vol != -1)
+            {
+                i += vol;
+                send($"volume set {i}");
+            } 
         }
 
         private void volumeSet(int i)
@@ -96,6 +106,7 @@ namespace VideoTerminalControl
         {
             connecting(listBox1.SelectedItem.ToString(), 24);
             log.Text += '\n' + tc.Read();
+            onConnect();
 
             // server output should end with "$" or ">", otherwise the connection failed
             //string prompt = s.TrimEnd();
@@ -131,11 +142,18 @@ namespace VideoTerminalControl
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (button3.Text != "")
+            {
             volumeSet(Convert.ToInt32(button3.Text));
+            }
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            volumeSet(Convert.ToInt32(button5.Text));
+            if (button5.Text != "")
+            {
+               volumeSet(Convert.ToInt32(button5.Text)); 
+            }
+            
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,11 +237,6 @@ namespace VideoTerminalControl
             }
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            send("exit");
-        }
-
         private void button14_Click(object sender, EventArgs e)
         {
             send("configlayout monitor1 full_screen");
@@ -252,6 +265,14 @@ namespace VideoTerminalControl
         private void button13_Click(object sender, EventArgs e)
         {
             send("configlayout monitor1 pip_lower_left");
+        }
+
+        private void onConnect()
+        {         
+            if (listBox1.SelectedItem.ToString() != null)
+            {
+                toolStripStatusLabel1.Text = "подключено к " + listBox1.SelectedItem.ToString();
+            }
         }
     }
 }
