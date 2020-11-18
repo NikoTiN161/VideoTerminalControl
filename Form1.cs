@@ -37,6 +37,7 @@ namespace VideoTerminalControl
                 log.Text += '\n' + tc.Login("admin", "123456", 200);
                 log.Text += '\n' + tc.Read();
                 log.Text += '\n' + tc.Read();
+                backgroundWorker1.RunWorkerAsync(); //check volume
             } else
             {
                 log.Text += '\n' + "нет подключения";
@@ -100,6 +101,22 @@ namespace VideoTerminalControl
                 muteBtn.BackgroundImage = VideoTerminalControl.Properties.Resources.mute;
                 isMute = false;
             }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(1000);
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            while (tc.IsConnected)
+            {
+                worker.ReportProgress(getVolume()); 
+                System.Threading.Thread.Sleep(500);
+            }
+        }
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            nowVol.Text = e.ProgressPercentage.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -274,5 +291,7 @@ namespace VideoTerminalControl
                 toolStripStatusLabel1.Text = "подключено к " + listBox1.SelectedItem.ToString();
             }
         }
+
+
     }
 }

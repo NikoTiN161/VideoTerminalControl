@@ -80,10 +80,6 @@ namespace VideoTerminalControl
         {
             get { return tcpSocket.Connected; }
         }
-        public string ipname
-        {
-            get { return tcpSocket.Client.RemoteEndPoint.AddressFamily.ToString(); }
-        }
 
         void ParseTelnet(StringBuilder sb)
         {
