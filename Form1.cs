@@ -36,8 +36,8 @@ namespace VideoTerminalControl
                 //login
                 log.Text += '\n' + tc.Login("admin", "123456", 200);
                 log.Text += '\n' + tc.Read();
-                log.Text += '\n' + tc.Read();
-                backgroundWorker1.RunWorkerAsync(); //check volume
+ 
+                getVolume();
             } else
             {
                 log.Text += '\n' + "нет подключения";
@@ -53,21 +53,23 @@ namespace VideoTerminalControl
                 return true;
             } else
             {
-                log.Text += "нет подключения";
+                log.Text += '\n' + "нет подключения";
                 return false;
             }
         }
 
         private int getVolume()
         {
-
             if (send("volume get"))
             {
                 string[] s = tc.Read().Split(new char[] { ' ' });
-                int result = Convert.ToInt32(s[(s.Length - 1)]);
-            return result;
+                if (TypeDescriptor.GetConverter(s[s.Length - 1]).CanConvertTo(typeof(int)))
+                {
+                    int result = Convert.ToInt32(s[s.Length - 1]);
+                    toolStripStatusLabel2.Text = $"Текущая громкость: {result}";
+                    return result;
+                }
             }
-
             return -1;
         }
 
@@ -78,12 +80,14 @@ namespace VideoTerminalControl
             {
                 i += vol;
                 send($"volume set {i}");
-            } 
+            }
+            getVolume();
         }
 
         private void volumeSet(int i)
         {
             send($"volume set {i}");
+            getVolume();
         }
 
         private void mute()
@@ -95,28 +99,13 @@ namespace VideoTerminalControl
                 muteBtn.BackgroundImage = VideoTerminalControl.Properties.Resources.volume;
                 isMute = true;
             } else
-            {
+            { 
                 send($"volume set {Volume}");
                 //print btn mute
                 muteBtn.BackgroundImage = VideoTerminalControl.Properties.Resources.mute;
                 isMute = false;
             }
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            System.Threading.Thread.Sleep(1000);
-            BackgroundWorker worker = sender as BackgroundWorker;
-
-            while (tc.IsConnected)
-            {
-                worker.ReportProgress(getVolume()); 
-                System.Threading.Thread.Sleep(500);
-            }
-        }
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            nowVol.Text = e.ProgressPercentage.ToString();
+        getVolume();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -284,6 +273,11 @@ namespace VideoTerminalControl
             send("configlayout monitor1 pip_lower_left");
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            send("exit");
+        }
+
         private void onConnect()
         {         
             if (listBox1.SelectedItem.ToString() != null)
@@ -292,6 +286,31 @@ namespace VideoTerminalControl
             }
         }
 
+        private void button16_Click(object sender, EventArgs e)
+        {
+            send("vcbutton play 3");
+        }
 
+        private void button17_Click(object sender, EventArgs e)
+        {
+            send("vcbutton stop");
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            send("exit");
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                Form1.ActiveForm.TopMost = true;
+            }
+            else
+            {
+                Form1.ActiveForm.TopMost = false;
+            }
+        }
     }
 }
