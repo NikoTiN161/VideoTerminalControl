@@ -127,8 +127,7 @@
             "1.6.100.1",
             "1.6.20.1",
             "1.6.100.5",
-            "1.6.20.2",
-            "80.72.229.118"});
+            "1.6.20.2"});
             this.listBox1.Location = new System.Drawing.Point(12, 19);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 95);

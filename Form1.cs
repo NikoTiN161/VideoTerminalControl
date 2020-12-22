@@ -69,6 +69,11 @@ namespace VideoTerminalControl
                     toolStripStatusLabel2.Text = $"Текущая громкость: {result}";
                     return result;
                 }
+                else
+                {
+                    log.Text += '\n' + "не смог получить громкость";
+                }
+
             }
             return -1;
         }
