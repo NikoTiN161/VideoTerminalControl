@@ -63,9 +63,10 @@ namespace VideoTerminalControl
             if (send("volume get"))
             {
                 string[] s = tc.Read().Split(new char[] { ' ' });
-                if (TypeDescriptor.GetConverter(s[s.Length - 1]).CanConvertTo(typeof(int)))
+                s[s.Length - 1] = s[s.Length - 1].Trim();
+                if (Int32.TryParse(s[s.Length - 1], out int result))
                 {
-                    int result = Convert.ToInt32(s[s.Length - 1]);
+                    result = Convert.ToInt32(s[s.Length - 1]);
                     toolStripStatusLabel2.Text = $"Текущая громкость: {result}";
                     return result;
                 }
@@ -276,11 +277,6 @@ namespace VideoTerminalControl
         private void button13_Click(object sender, EventArgs e)
         {
             send("configlayout monitor1 pip_lower_left");
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            send("exit");
         }
 
         private void onConnect()
