@@ -25,7 +25,7 @@ namespace VideoTerminalControl
     {
         TcpClient tcpSocket;
 
-        int TimeOutMs = 200;
+        int TimeOutMs = 30;
 
         public TelnetConnection(string Hostname, int Port)
         {
